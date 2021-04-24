@@ -1,11 +1,12 @@
-
-
 import numpy as np
 import BitString as bs
 import ParityBitCoder as pbc
 
-def main():
+def test():
     size = 12
     bitstring = bs.BitString(size)
+    paritybitcoder = pbc.ParityBitCoder(size, bitstring.bool_arr)
+    paritybitcoder.Coding()
     print(bitstring.returnArray())
-main()
+    print(paritybitcoder.returnArray())
+test()
