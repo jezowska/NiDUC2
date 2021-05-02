@@ -13,3 +13,4 @@ class RepetitionBitCoder(object):
 
     def return_array(self):
         return self.coded_arr
+    
