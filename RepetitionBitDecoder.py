@@ -13,7 +13,6 @@ class RepetitionBitDecoder(object):
 
             elif (self._bool_arr[i + 1] == self._bool_arr[i + 2]):
                 self.decoded_arr.append(self._bool_arr[i + 1])
-            print(i)
 
     def return_array(self):
         return self.decoded_arr
