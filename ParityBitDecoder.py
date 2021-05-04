@@ -2,12 +2,12 @@ import numpy as np
 
 class ParityBitDecoder(object):
 
-    def __init__(self, size, bool_arr):
-        self.Size = size
+    def __init__(self, bool_arr):
+        self.Size = len(bool_arr)
         self.decoded_arr = []
         self.Bool_arr = bool_arr
 
-    def Decoding(self):
+    def decoding(self):
         for i in range(0, self.Size-6, 7):
             # Assigning expected value of parity bits 1, 2 and 3 to variables
             if self.Bool_arr[i] + self.Bool_arr[i + 1] + self.Bool_arr[i + 3] == 0 or self.Bool_arr[i] + \

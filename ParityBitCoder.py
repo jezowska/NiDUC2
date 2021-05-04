@@ -3,8 +3,8 @@ import numpy as np
 
 class ParityBitCoder(object):
 
-    def __init__(self, size, bool_arr):
-        self.Size = np.round_(1.75 * size)
+    def __init__(self, bool_arr):
+        self.Size = np.round_(1.75 * len(bool_arr))
         self.Size = int(self.Size)
         self.coded_arr = []
         self.Bool_arr = bool_arr

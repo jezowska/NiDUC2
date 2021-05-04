@@ -8,7 +8,6 @@ class Noise(object):
 
     def adding_noise_inc(self):
         prob = 0.5
-        print(self._bool_arr)
         for i in range(self.size):
             x = np.random.uniform(0.0, 1.0)
             if( x > prob ):
@@ -23,7 +22,7 @@ class Noise(object):
                 else:
                     self.new_array.append(1);
 
-        print(self._bool_arr)
+
 
     def adding_noise_dec(self):
         prob = 0.5
