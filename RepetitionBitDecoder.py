@@ -4,15 +4,34 @@ class RepetitionBitDecoder(object):
         self.size = len(bool_arr)
         self._bool_arr = bool_arr
         self.decoded_arr = []
+        self.wykryte = 0;
+
+
 
     def decoding(self):
-        for i in range(0, self.size - 1, 3):
+        counter = 0
+        zeros = 0
+        ones = 0
+        for i in range(0, self.size):
+            if self._bool_arr[i] == 0 : zeros += 1
+            if self._bool_arr[i] == 1 : ones += 1
+            counter += 1
 
-            if (self._bool_arr[i] == self._bool_arr[i + 1] or self._bool_arr[i] == self._bool_arr[i + 2]):
-                self.decoded_arr.append(self._bool_arr[i])
+            if(counter == 3):
+                if(zeros > ones) :
+                    self.decoded_arr.append(0)
+                else:
+                    self.decoded_arr.append(1)
+                if(zeros != 3 and zeros != 0) :
+                    self.wykryte += 1
+                counter = 0
+                zeros   = 0
+                ones    = 0
 
-            elif (self._bool_arr[i + 1] == self._bool_arr[i + 2]):
-                self.decoded_arr.append(self._bool_arr[i + 1])
+
+
+
+
 
     def return_array(self):
         return self.decoded_arr
