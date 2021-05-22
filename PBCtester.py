@@ -7,7 +7,7 @@ import ParityBitDecoder as pbd
 def test():
     size = 100000
     bitstring = bs.BitString(size)
-    paritybitcoder = pbc.ParityBitCoder(size, bitstring.bool_arr)
+    paritybitcoder = pbc.ParityBitCoder(bitstring.bool_arr)
     paritybitcoder.Coding()
     print(bitstring.returnArray())
     print(paritybitcoder.returnArray())
@@ -15,8 +15,8 @@ def test():
         if rd.random() > 0.999:
             paritybitcoder.coded_arr[i] = 1 - paritybitcoder.coded_arr[i]
     print(paritybitcoder.returnArray())
-    paritybitdecoder = pbd.ParityBitDecoder(int(np.round_(size*1.75)), paritybitcoder.coded_arr)
-    paritybitdecoder.Decoding()
+    paritybitdecoder = pbd.ParityBitDecoder(paritybitcoder.coded_arr)
+    paritybitdecoder.decoding()
     tester = 0
     print(paritybitdecoder.returnArray())
     for i in range(size-size % 4):
