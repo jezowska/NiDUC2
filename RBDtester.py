@@ -1,3 +1,4 @@
+
 import BitString as bs
 import ParityBitDecoder as pbd
 import RepetitionBitCoder as rbc
@@ -9,7 +10,7 @@ niewykryte = 0
 nienaprawialne = 0
 bledy = 0
 
-size = 3
+size = 1000
 
 # bazowy ciąg bitów
 bitstring = bs.BitString(size)
@@ -33,24 +34,23 @@ rep_n = rbd.RepetitionBitDecoder(repetition_noised.new_array)
 rep_n.decoding();
 #print("Potrajanie bitów - dekoder:")
 #print(rep_n.return_array())
-
 index = 0
 pom = 0
 
-for i in range(0, size * 3):
+for i in range(0, (size * 3), 1):
     pom += 1
     if bitstring.bool_arr[int(i/3)] != repetition_noised.new_array[i]:
            index += 1
-    print("-------------------")
-    print(bitstring.bool_arr[int(i/3)])
-    print(repetition_noised.new_array[i])
+    if index == 3:
+        niewykryte += 1
 
-    if index > 0 and pom == 3:
+    if index > 0 and pom % 3 == 0:
         bledy += 1
-    index = 0
-
+        index = 0
 
 print("wykryte")
 print(rep_n.wykryte)
+print("niewykryte")
+print(niewykryte)
 print("bledy ")
 print(bledy)
