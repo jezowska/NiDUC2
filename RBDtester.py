@@ -7,8 +7,8 @@ import RepetitionBitDecoder as rbd
 import noise
 
 
-size = 100000
-time = 10
+size = 25000
+time = 1000
 wynik = []
 for i in range(time):
     print(i)
@@ -60,13 +60,3 @@ for i in range(time):
 
 dane = (pd.DataFrame(wynik, columns= ["wykryte", "nienaprawialne", "niewykryte", "bledy"]))
 dane.to_csv('Dane.csv', index=True, sep=';')
-
-print("---")
-print("wykryte")
-print(rep_n.wykryte)
-print("nienaprawialne")
-print(nienaprawialne)
-print("niewykryte")
-print(niewykryte)
-print("bledy ")
-print(bledy)
