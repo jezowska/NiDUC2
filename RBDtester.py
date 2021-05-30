@@ -1,4 +1,4 @@
-
+import pandas as pd
 import BitString as bs
 import ParityBitDecoder as pbd
 import RepetitionBitCoder as rbc
@@ -9,7 +9,6 @@ import noise
 niewykryte = 0
 nienaprawialne = 0
 bledy = 0
-
 size = 100000
 
 # bazowy ciąg bitów
@@ -34,23 +33,26 @@ rep_n = rbd.RepetitionBitDecoder(repetition_noised.new_array)
 rep_n.decoding();
 #print("Potrajanie bitów - dekoder:")
 #print(rep_n.return_array())
-index = 0
+indeks = 0
 pom = 0
 
 for i in range(0, (size * 3), 1):
     pom += 1
     if bitstring.bool_arr[int(i/3)] != repetition_noised.new_array[i]:
-           index += 1
-    if index == 3:
+           indeks += 1
+    if indeks == 3:
         niewykryte += 1
 
-    if index > 0 and pom % 3 == 0:
+    if indeks > 0 and pom % 3 == 0:
         bledy += 1
-        index = 0
+        indeks = 0
 
 for i in range(0, size, 1):
     if(rep_n.decoded_arr[i] != bitstring.bool_arr[i]):
         nienaprawialne += 1
+for i in range(0, 5, 1):
+    dane = pd.DataFrame([[rep_n.wykryte, nienaprawialne, niewykryte, bledy]], columns=['Wykryte', 'Nienaprawialne', 'Niewykryte', 'Bledy'])
+    dane.to_csv('Dane.csv', index=True)
 
 print("wykryte")
 print(rep_n.wykryte)
