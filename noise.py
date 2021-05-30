@@ -47,7 +47,6 @@ class Noise(object):
             if (x > prob):
                 if (self._bool_arr[i] == 0):
                     self.new_array.append(1);
-                    prob -= 0.01;
                 else:
                     self.new_array.append(0);
             else:

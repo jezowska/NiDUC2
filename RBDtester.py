@@ -10,12 +10,12 @@ niewykryte = 0
 nienaprawialne = 0
 bledy = 0
 
-size = 1000
+size = 100000
 
 # bazowy ciąg bitów
 bitstring = bs.BitString(size)
 #print("Bez kodowania:")
-print(bitstring.returnArray())
+#print(bitstring.returnArray())
 
 #kod powtarzalny
 repetition = rbc.RepetitionBitCoder(bitstring.bool_arr);
@@ -28,7 +28,7 @@ coded_array = repetition.coded_arr
 repetition_noised = noise.Noise(coded_array)
 repetition_noised.adding_noise()
 #print("Potrajanie bitów z szumem:")
-print(repetition_noised.new_array)
+#print(repetition_noised.new_array)
 
 rep_n = rbd.RepetitionBitDecoder(repetition_noised.new_array)
 rep_n.decoding();
@@ -48,8 +48,14 @@ for i in range(0, (size * 3), 1):
         bledy += 1
         index = 0
 
+for i in range(0, size, 1):
+    if(rep_n.decoded_arr[i] != bitstring.bool_arr[i]):
+        nienaprawialne += 1
+
 print("wykryte")
 print(rep_n.wykryte)
+print("nienaprawialne")
+print(nienaprawialne)
 print("niewykryte")
 print(niewykryte)
 print("bledy ")
