@@ -36,24 +36,28 @@ rep_n.decoding();
 indeks = 0
 pom = 0
 
-for i in range(0, (size * 3), 1):
-    pom += 1
-    if bitstring.bool_arr[int(i/3)] != repetition_noised.new_array[i]:
+wynik = []
+for i in range(0, 3, 1):
+    for i in range(0, (size * 3), 1):
+        pom += 1
+        if bitstring.bool_arr[int(i/3)] != repetition_noised.new_array[i]:
            indeks += 1
-    if indeks == 3:
-        niewykryte += 1
+        if indeks == 3:
+            niewykryte += 1
 
-    if indeks > 0 and pom % 3 == 0:
-        bledy += 1
-        indeks = 0
+        if indeks > 0 and pom % 3 == 0:
+            bledy += 1
+            indeks = 0
 
-for i in range(0, size, 1):
-    if(rep_n.decoded_arr[i] != bitstring.bool_arr[i]):
-        nienaprawialne += 1
-for i in range(0, 5, 1):
-    dane = pd.DataFrame([[rep_n.wykryte, nienaprawialne, niewykryte, bledy]], columns=['Wykryte', 'Nienaprawialne', 'Niewykryte', 'Bledy'])
-    dane.to_csv('Dane.csv', index=True)
+    for i in range(0, size, 1):
+        if(rep_n.decoded_arr[i] != bitstring.bool_arr[i]):
+            nienaprawialne += 1
+    wynik.append([rep_n.wykryte, nienaprawialne, niewykryte, bledy])
 
+dane = (pd.DataFrame(wynik))
+dane.to_csv('Dane.csv', index=True, sep=';')
+
+print("---")
 print("wykryte")
 print(rep_n.wykryte)
 print("nienaprawialne")
