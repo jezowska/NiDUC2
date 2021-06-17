@@ -27,11 +27,5 @@ class RepetitionBitDecoder(object):
                 counter = 0
                 zeros   = 0
                 ones    = 0
-
-
-
-
-
-
     def return_array(self):
         return self.decoded_arr

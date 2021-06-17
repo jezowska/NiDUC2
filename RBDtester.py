@@ -59,4 +59,4 @@ for i in range(time):
     wynik.append([rep_n.wykryte, nienaprawialne, niewykryte, bledy])
 
 dane = (pd.DataFrame(wynik, columns= ["wykryte", "nienaprawialne", "niewykryte", "bledy"]))
-dane.to_csv('Dane.csv', index=True, sep=';')
+dane.to_csv('Dane_szum01.csv', index=True, sep=';')

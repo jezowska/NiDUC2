@@ -7,20 +7,20 @@ class Noise(object):
         self.new_array = []
 
     def adding_noise_inc(self):
-        prob = 0.5
+        prob = 0.999
         for i in range(self.size):
             x = np.random.uniform(0.0, 1.0)
             if( x > prob ):
                 if(self._bool_arr[i] == 0):
-                    self.new_array.append(1);
-                    prob -= 0.01;
+                    self.new_array.append(1)
+                    prob -= 0.01
                 else:
-                    self.new_array.append(0);
+                    self.new_array.append(0)
             else:
                 if(self._bool_arr[i] == 0):
-                    self.new_array.append(0);
+                    self.new_array.append(0)
                 else:
-                    self.new_array.append(1);
+                    self.new_array.append(1)
 
 
 
@@ -30,18 +30,18 @@ class Noise(object):
             x = np.random.uniform(0.0, 1.0)
             if (x > prob):
                 if (self._bool_arr[i] == 0):
-                    self.new_array.append(1);
-                    prob += 0.01;
+                    self.new_array.append(1)
+                    prob += 0.01
                 else:
-                    self.new_array.append(0);
+                    self.new_array.append(0)
             else:
                 if (self._bool_arr[i] == 0):
-                    self.new_array.append(0);
+                    self.new_array.append(0)
                 else:
-                    self.new_array.append(1);
+                    self.new_array.append(1)
 
     def adding_noise(self):
-        prob = 0.95
+        prob = 0.99
         for i in range(self.size):
             x = np.random.uniform(0.0, 1.0)
             if (x > prob):
